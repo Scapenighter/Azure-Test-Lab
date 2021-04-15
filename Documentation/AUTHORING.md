@@ -15,7 +15,7 @@ The following example shows the sections that make up the basic structure of a d
 file.
 
     {
-      "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2015-01-01/dtlArtifacts.json",
+      "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
       "title": "",
       "description": "",
       "iconUri": "",
@@ -95,10 +95,11 @@ The following list shows common functions.
 The following example shows how to use expression and functions to construct a value. 
 
     runCommand": { 
-         "commandToExecute": "[concat('powershell.exe -File startChocolatey.ps1'
-    , ' -RawPackagesList ', parameters('packages')
-    , ' -Username ', parameters('installUsername')
-    , ' -Password ', parameters('installPassword'))]" 
+      "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./startChocolatey.ps1'
+        , ' -RawPackagesList ', parameters('packages')
+        , ' -Username ', parameters('installUsername')
+        , ' -Password ', parameters('installPassword')
+        , '\"')]" 
     }
 
 -------------------------------------------------------------------------------
@@ -135,13 +136,9 @@ Create your custom artifact by following steps below:
   
      Here is how an artifact folder might look:
      
-     ![Artifact folder in Github][artifact-folder]
+     ![Artifact-folder]( .../../../Documentation/images/artifact-folder-github.png)
  
 
 - Add an Artifacts Repository in Lab
 
   Please [check out instructions here](https://azure.microsoft.com/en-us/documentation/articles/devtest-lab-add-artifact-repo/) to add an Artifacts Repository in Lab
-
-
-
-[artifact-folder]: images\artifact-folder-github.png
