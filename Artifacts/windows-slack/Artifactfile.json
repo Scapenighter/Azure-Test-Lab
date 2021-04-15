@@ -1,12 +1,13 @@
 {
     "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
     "title": "Slack",
+    "publisher": "Microsoft",
     "description": "Installs Slack using the Chocolatey package manager",
     "tags": [
         "Windows",
         "Slack"
     ],
-    "iconUri": "https://chocolatey.org/content/packageimages/slack.1.0.0.png",
+    "iconUri": "https://a.slack-edge.com/4a5c4/marketing/img/icons/icon_slack_hash_colored.svg",
     "targetOsType": "Windows",
     "parameters": {
         "installUsername": {

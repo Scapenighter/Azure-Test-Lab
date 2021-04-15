@@ -1,0 +1,46 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "newCustomImageName": {
+            "type": "string"
+        },
+        "labName": {
+            "type": "string"
+        },
+        "vmOsInfo": {
+            "type": "object"
+        },
+        "description": {
+            "type": "string",
+            "defaultValue": ""
+        },
+        "author": {
+            "type": "string",
+            "defaultValue": ""
+        }
+    },
+    "variables": {
+        "customImageId": "[resourceId('Microsoft.DevTestLab/labs/customImages', parameters('labName'), parameters('newCustomImageName'))]",
+        "customImageName": "[concat(parameters('labName'), '/', parameters('newCustomImageName'))]"
+    },
+    "resources": [
+        {
+            "apiVersion": "2018-10-15-preview",
+            "type": "Microsoft.DevTestLab/labs/customImages",
+            "name": "[variables('customImageName')]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "author": "[parameters('author')]",
+                "description": "[parameters('description')]",
+                "vm": "[parameters('vmOsInfo')]"
+            }
+        }
+    ],
+    "outputs": {
+        "customImageId": {
+            "type": "string",
+            "value": "[variables('customImageId')]"
+        }
+    }
+}

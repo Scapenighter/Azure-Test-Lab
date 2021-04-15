@@ -1,0 +1,48 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
+  "title": "Visual Studio",
+  "description": "Installs Visual Studio",
+  "publisher": "Microsoft",
+  "tags": [
+    "Windows"
+  ],
+  "iconUri": "https://devblogs.microsoft.com/visualstudio/wp-content/uploads/sites/4/2019/01/visualstudio-1.png",
+  "targetOsType": "Windows",
+  "parameters": {
+    "version": {
+      "type": "string",
+      "displayName": "Version",
+      "description": "The Visual Studio Version",
+      "defaultValue": "2017",
+      "allowedValues": [
+        "2015",
+        "2017"
+      ]
+    },
+    "sku": {
+      "type": "string",
+      "displayName": "SKU",
+      "description": "The Visual Studio SKU to install.",
+      "defaultValue": "Enterprise",
+      "allowedValues": [
+        "Enterprise",
+        "Professional"
+      ]
+    },
+    "installerArgs": {
+      "type": "string",
+      "displayName": "Optional args passed to VS installer",
+      "description": "Additional arguments to pass when installing VS.",
+      "defaultValue": "",
+      "allowEmpty": true
+    }
+  },
+  "runCommand": {
+    "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./artifact.ps1 -version ''', parameters('version'), ''' -sku ''', parameters('sku'), ''' -installerArgs ', '''', parameters('installerArgs'), '''', '\"')]"
+  },
+  "postDeployActions": [
+    {
+      "action": "restart"
+    }
+  ]
+}

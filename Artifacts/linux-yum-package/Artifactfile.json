@@ -1,6 +1,7 @@
 {
     "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
     "title": "YUM Package",
+    "publisher": "Microsoft",
     "description": "Install YUM packages on Linux",
     "tags": [
         "Packages",
@@ -19,7 +20,7 @@
         "update": {
             "type": "string",
             "displayName": "Run Update First",
-            "defaultValue": "true",
+            "defaultValue": "false",
             "allowEmpty": false,
             "allowedValues": [
                 "true",
