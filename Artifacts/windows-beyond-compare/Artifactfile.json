@@ -1,0 +1,15 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
+    "title": "Beyond Compare",
+    "publisher": "andremarques023",
+    "description": "Installs Beyond Compare using the Chocolatey package manager.",
+    "tags": [
+        "Windows",
+        "Beyond Compare"
+    ],
+    "iconUri": "http://www.scootersoftware.com/images/media_BeyondCompareIcon512x512.png",
+    "targetOsType": "Windows",
+    "runCommand": {
+        "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./startChocolatey.ps1 -PackageList ', 'beyondcompare', '\"')]"
+    }
+}
